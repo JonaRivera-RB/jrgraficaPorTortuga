@@ -58,7 +58,7 @@ void comenzar(int tablero[][20],int tamaño)
         if (opc==1)
         {
             pluma=0;
-            cout<<"pluma hacia abajo\n";
+            cout<<"pluma hacia arriba\n";
         }
         else if (opc==2)
         {
@@ -78,9 +78,10 @@ void comenzar(int tablero[][20],int tamaño)
             cin>>pasos;
             if (girarDerecha==0)
                 for (int i=posicionY; i<=posicionY; i++) {
-                    for (int j=posicionX; j<pasos; j++) {
+                    for (int j=posicionX, k=pasos; k>0; j++,k--) {
                         tablero[i][j]=pluma;
                         posicionX=j;
+                        cout<<posicionX;
                     }
                 }
             else if (girarDerecha==1)
@@ -89,6 +90,7 @@ void comenzar(int tablero[][20],int tamaño)
                         tablero[i][j]=pluma;
                     }
                     posicionY=i;
+                    cout<<posicionY;
                 }
             else if (girarDerecha==2)
                 for (int i=posicionY; i<=posicionY; i++) {
@@ -104,6 +106,7 @@ void comenzar(int tablero[][20],int tamaño)
                         tablero[k][j]=pluma;
                     }
                     posicionY=k;
+                    cout<<posicionY;
                 }
         }
         
