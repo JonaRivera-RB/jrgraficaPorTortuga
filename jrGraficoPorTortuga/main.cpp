@@ -40,7 +40,7 @@ int menu()
 }
 void comenzar(int tablero[][20],int tamaño)
 {
-    int opc,pasos = 0,pluma=0,girarDerecha = 0,girarIzq;
+    int opc,pasos = 0,pluma=0,girarDerecha = 0,girarIzq = 0;
     int posicionY=0,posicionX=0;
     int t = 0;
     cout<<"\t\t\tAVISO\t\n";
@@ -69,10 +69,14 @@ void comenzar(int tablero[][20],int tamaño)
             girarDerecha += 1;
             if(girarDerecha==4)
                 girarDerecha=0;
-            cout<<girarDerecha<<"--giraste a la derecha\n";
+            cout<<girarDerecha<<"giraste a la derecha\n";
         }
         else if(opc==4)
-            girarIzq = 1;
+        {  girarDerecha -= 1;
+        if(girarDerecha<0)
+            girarDerecha=3;
+        cout<<girarDerecha<<"giraste a la izquierda\n";
+        }
         else if (opc==5) {
             cout<<"cuantos pasos quiere dar?\n";
             cin>>pasos;
