@@ -10,6 +10,7 @@ int menu();
 void comenzar(int tablero[][20],int tamaño);
 void mostrarTablero(int tablero[][20], int tamaño);
 void restablecerTablero(int tablero[][20], int tamaño);
+void mostrarTableroOriginal(int tablero[][20], int tamaño);
 using namespace std;
 int main(int argc, const char * argv[]) {
     int opc, tamaño=20;
@@ -32,6 +33,7 @@ int main(int argc, const char * argv[]) {
         else
             cout<<"opcion no valida\n";
         mostrarTablero(tablero, tamaño);
+        mostrarTableroOriginal(tablero, tamaño);
     } while (opc!=0);
    
     return 0;
@@ -125,10 +127,23 @@ void comenzar(int tablero[][20],int tamaño)
 void mostrarTablero(int tablero[][20], int tamaño)
 {
     for (int i=0; i<tamaño; i++) {
-        for (int j=0; j<tamaño; j++)
-            cout<<" "<<tablero[i][j];
+        for (int j=0; j<tamaño; j++){
+            if (tablero[i][j]==1) {
+                cout<<"*";
+            }
+            else
+                cout<<" ";
+        }
         cout<<"\n";
     }
+}
+void mostrarTableroOriginal(int tablero[][20], int tamaño)
+{
+        for (int i=0; i<tamaño; i++) {
+          for (int j=0; j<tamaño; j++)
+              cout<<" "<<tablero[i][j];
+          cout<<"\n";
+          }
 }
 void restablecerTablero(int tablero[][20],int tamaño)
 {
