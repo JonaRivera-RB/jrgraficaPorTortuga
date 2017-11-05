@@ -9,23 +9,31 @@
 int menu();
 void comenzar(int tablero[][20],int tamaño);
 void mostrarTablero(int tablero[][20], int tamaño);
+void restablecerTablero(int tablero[][20], int tamaño);
 using namespace std;
 int main(int argc, const char * argv[]) {
     int opc, tamaño=20;
     int tablero[20][20]{{0}};
     cout << "Grafica por tortuga!\n";
     
-    //mostrarTablero(tablero, tamaño);
-    opc = menu();
-    if (opc==1)
-        comenzar(tablero, tamaño);
-    else if (opc==2)
-        cout<<"opc 1";
-    else if (opc==0)
-        cout<<"opc 1";
-    else
-        cout<<"opcion no valida";
-    mostrarTablero(tablero, tamaño);
+    do {
+        opc = menu();
+
+        if (opc==1)
+            comenzar(tablero, tamaño);
+        else if (opc==2)
+        { //ToDo instrucciones
+        }
+        else if (opc==3)
+            restablecerTablero(tablero,tamaño);
+        
+        else if (opc==0)
+            cout<<"nos vemos! :)\n";
+        else
+            cout<<"opcion no valida\n";
+        mostrarTablero(tablero, tamaño);
+    } while (opc!=0);
+   
     return 0;
 }
 int menu()
@@ -34,15 +42,15 @@ int menu()
     cout<<"\tPor favor seleccione una opcion: \n";
     cout<<"\t1.-comenzar\n";
     cout<<"\t2.-Instrucciones\n";
+    cout<<"\t3.-Reiniciar\n";
     cout<<"\t0.-Salir\n";
     cin>>opc;
     return opc;
 }
 void comenzar(int tablero[][20],int tamaño)
 {
-    int opc,pasos = 0,pluma=0,girarDerecha = 0,girarIzq = 0;
+    int opc,pasos = 0,pluma=0,girarDerecha = 0;
     int posicionY=0,posicionX=0;
-    int t = 0;
     cout<<"\t\t\tAVISO\t\n";
     cout<<"la primera vez que carga el playground la tortuga estara mirando hacia la derecha -> y la pluma estara hacia arriba\n\n";
     cout<<"\t\t\tComandos\n";
@@ -85,35 +93,33 @@ void comenzar(int tablero[][20],int tamaño)
                     for (int j=posicionX, k=pasos; k>0; j++,k--) {
                         tablero[i][j]=pluma;
                         posicionX=j;
-                        cout<<posicionX;
+                     //   cout<<posicionX;
                     }
                 }
             else if (girarDerecha==1)
                 for (int k=pasos,i=posicionY; k>0; k--,i++) {
-                    for (int j=posicionX; j<=posicionX; j++) {
+                    for (int j=posicionX; j<=posicionX; j++)
                         tablero[i][j]=pluma;
-                    }
                     posicionY=i;
-                    cout<<posicionY;
+                    //cout<<posicionY;
                 }
             else if (girarDerecha==2)
                 for (int i=posicionY; i<=posicionY; i++) {
                     for (int k=posicionX, j=pasos; j>0; j--,k--) {
                         tablero[i][k]=pluma;
                         posicionX=k;
-                        cout<<posicionX<<"x\n";
+                        //cout<<posicionX<<"x\n";
                     }
                 }
             else if (girarDerecha==3)
                 for (int k=posicionY, i=pasos; i>0; i--,k--) {
-                    for (int j=posicionX; j<=posicionX; j++) {
+                    for (int j=posicionX; j<=posicionX; j++)
                         tablero[k][j]=pluma;
-                    }
                     posicionY=k;
-                    cout<<posicionY;
+                   // cout<<posicionY;
                 }
         }
-        
+
     } while (opc!=6);
 }
 void mostrarTablero(int tablero[][20], int tamaño)
@@ -123,4 +129,10 @@ void mostrarTablero(int tablero[][20], int tamaño)
             cout<<" "<<tablero[i][j];
         cout<<"\n";
     }
+}
+void restablecerTablero(int tablero[][20],int tamaño)
+{
+    for (int i=0; i<tamaño; i++)
+        for (int j=0; j<tamaño; j++)
+            tablero[i][j]=0;
 }
