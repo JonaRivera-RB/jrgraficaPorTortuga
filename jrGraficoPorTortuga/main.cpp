@@ -93,30 +93,48 @@ void comenzar(int tablero[][20],int tamaño)
             if (girarDerecha==0)
                 for (int i=posicionY; i<=posicionY; i++) {
                     for (int j=posicionX, k=pasos; k>0; j++,k--) {
+                        if (j>=tamaño-1){
+                            k=0;
+                            tablero[i][j]=pluma;
+                        }
                         tablero[i][j]=pluma;
                         posicionX=j;
-                     //   cout<<posicionX;
+                       // cout<<posicionX;
                     }
                 }
             else if (girarDerecha==1)
                 for (int k=pasos,i=posicionY; k>0; k--,i++) {
-                    for (int j=posicionX; j<=posicionX; j++)
+                    for (int j=posicionX; j<=posicionX; j++){
+                        if (i>=tamaño-1){
+                            k=0;
+                            tablero[i][j]=pluma;
+                        }
                         tablero[i][j]=pluma;
+                    }
                     posicionY=i;
-                    //cout<<posicionY;
+                  //  cout<<posicionY;
                 }
             else if (girarDerecha==2)
                 for (int i=posicionY; i<=posicionY; i++) {
                     for (int k=posicionX, j=pasos; j>0; j--,k--) {
+                        if (k==0){
+                            j=0;
+                            tablero[i][k]=pluma;
+                        }
                         tablero[i][k]=pluma;
                         posicionX=k;
-                        //cout<<posicionX<<"x\n";
+                        cout<<posicionX<<"x\n";
                     }
                 }
             else if (girarDerecha==3)
                 for (int k=posicionY, i=pasos; i>0; i--,k--) {
-                    for (int j=posicionX; j<=posicionX; j++)
+                    for (int j=posicionX; j<=posicionX; j++){
+                        if (k==0){
+                            i=0;
+                            tablero[k][j]=pluma;
+                        }
                         tablero[k][j]=pluma;
+                    }
                     posicionY=k;
                    // cout<<posicionY;
                 }
